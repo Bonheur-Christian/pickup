@@ -1,6 +1,10 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
+import { Montserrat } from "next/font/google";
 import "./globals.css";
+import { SidebarProvider } from "@/components/ui/sidebar";
+import { AppSidebar } from "@/components/custom/SideBar";
+import { DashboardHeader } from "@/components/custom/DashboardHeader";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -10,6 +14,12 @@ const geistSans = Geist({
 const geistMono = Geist_Mono({
   variable: "--font-geist-mono",
   subsets: ["latin"],
+});
+
+const montserrat = Montserrat({
+  variable: "--font-montserrat",
+  subsets: ["latin"],
+  display: "swap",
 });
 
 export const metadata: Metadata = {
@@ -25,9 +35,17 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
+        className={`${geistSans.variable} ${geistMono.variable} ${montserrat.variable} antialiased`}
       >
-        {children}
+        <SidebarProvider>
+          {/* <DashboardHeader /> */}
+          <div className="flex h-screen overflow-hidden">
+            <AppSidebar />
+            <div className="flex flex-col flex-1 overflow-hidden">
+              <main className="flex-1 overflow-auto space-y-6">{children}</main>
+            </div>
+          </div>
+        </SidebarProvider>
       </body>
     </html>
   );
