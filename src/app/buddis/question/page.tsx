@@ -65,7 +65,7 @@ export default function QuestionBank() {
         button1Text="Manage Interview Question Banks"
         button2Text="View Coverage Requests"
       />
-      <div className="flex items-center gap-6 ">
+      <div className="flex gap-6 ">
         <div className="w-full">
           <div className="flex items-center justify-between mb-6">
             <h2 className="text-2xl font-semibold">Question Bank</h2>
