@@ -1,47 +1,48 @@
-
-import React from 'react';
-import { ChevronRight, MoreHorizontal } from 'lucide-react';
-import Image from 'next/image';
-import { Button } from '../ui/button';
+import React from "react";
+import { ChevronRight, MoreHorizontal } from "lucide-react";
+import Image from "next/image";
+import { Button } from "../../ui/button";
 
 interface Registration {
   id: string;
   name: string;
   email: string;
   avatar: string;
-  status: 'Pending' | 'Approved' | 'Rejected';
+  status: "Pending" | "Approved" | "Rejected";
 }
 
 const RecentRegistrations = () => {
   const registrations: Registration[] = [
     {
-      id: '1',
-      name: 'Latoya Langosh',
-      email: 'buddi@gmail.com',
-      avatar: '/avatar.png',
-      status: 'Pending'
+      id: "1",
+      name: "Latoya Langosh",
+      email: "buddi@gmail.com",
+      avatar: "/avatar.png",
+      status: "Pending",
     },
     {
-      id: '2',
-      name: 'Abel Mohr',
-      email: 'buddi@gmail.com',
-      avatar: '/avatar.png',
-      status: 'Pending'
+      id: "2",
+      name: "Abel Mohr",
+      email: "buddi@gmail.com",
+      avatar: "/avatar.png",
+      status: "Pending",
     },
     {
-      id: '3',
-      name: 'Erick Champlin',
-      email: 'buddi@gmail.com',
-      avatar: '/avatar.png',
-      status: 'Pending'
-    }
+      id: "3",
+      name: "Erick Champlin",
+      email: "buddi@gmail.com",
+      avatar: "/avatar.png",
+      status: "Pending",
+    },
   ];
 
   return (
     <div className="bg-white rounded-2xl border border-gray-200 p-6 max-w-md mx-auto">
       {/* Header */}
       <div className="flex items-center justify-between mb-6">
-        <h2 className="text-lg font-semibold text-gray-900">Recent Registrations</h2>
+        <h2 className="text-lg font-semibold text-gray-900">
+          Recent Registrations
+        </h2>
         <button className="text-gray-400 hover:text-gray-600 transition-colors p-1">
           <MoreHorizontal size={20} />
         </button>
@@ -49,19 +50,18 @@ const RecentRegistrations = () => {
 
       <div className="space-y-4 mb-6 border-b border-gray-200">
         {registrations.map((registration) => (
-          <div 
+          <div
             key={registration.id}
             className="flex items-center gap-3 p-2 rounded-lg hover:bg-gray-50 transition-colors cursor-pointer group"
           >
             {/* Avatar */}
             <div className="w-12 h-12 rounded-full overflow-hidden bg-gray-200 flex-shrink-0">
-              <Image 
-                src={registration.avatar} 
+              <Image
+                src={registration.avatar}
                 alt={registration.name}
                 width={50}
                 height={50}
-                  className="w-full h-full object-cover"
-              
+                className="w-full h-full object-cover"
               />
             </div>
 
@@ -80,9 +80,9 @@ const RecentRegistrations = () => {
               <span className="px-3 py-1 bg-blue-50 text-blue-600 text-sm font-medium rounded-full">
                 {registration.status}
               </span>
-              <ChevronRight 
-                size={16} 
-                className="text-gray-400 group-hover:text-gray-600 transition-colors" 
+              <ChevronRight
+                size={16}
+                className="text-gray-400 group-hover:text-gray-600 transition-colors"
               />
             </div>
           </div>

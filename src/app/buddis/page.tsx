@@ -1,20 +1,20 @@
-"use client";
-
+import ApplicantCard from "@/components/custom/ApplicantCard";
+import BuddiProfileCard from "@/components/custom/buddis/BuddiProfileCard";
+import BuddisTable from "@/components/custom/buddis/BuddisTable";
 import { BuddisMap } from "@/components/custom/BuddisMap";
-import BuddisParentsChart from "@/components/custom/overview/BuddisParentsChart";
 import CoverageRequests from "@/components/custom/CoverageRequests";
-import DashboardCard from "@/components/custom/overview/DashboardCard";
+import MetricCard from "@/components/custom/MetricCard";
 import NotificationBanner from "@/components/custom/NotificationBanner";
-import RecentRegistrations from "@/components/custom/overview/RecentRegistrations";
+import DashboardTable from "@/components/custom/overview/DashboardTable";
+import SubTopBar from "@/components/custom/SubTopBar";
 import { Button } from "@/components/ui/button";
-import { Tabs, TabsList, TabsContent, TabsTrigger } from "@/components/ui/tabs";
-import { MoreHorizontal, PlusIcon } from "lucide-react";
 import {
   DropdownMenu,
-  DropdownMenuTrigger,
   DropdownMenuContent,
   DropdownMenuItem,
+  DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
+import { Input } from "@/components/ui/input";
 import {
   Select,
   SelectContent,
@@ -22,60 +22,70 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select";
+import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
+import { Filter, Bell, MoreHorizontal, PlusIcon, Search } from "lucide-react";
 
-import DashboardTable from "@/components/custom/overview/DashboardTable";
-import ApplicantCard from "@/components/custom/ApplicantCard";
-import SubTopBar from "@/components/custom/SubTopBar";
-
-export default function Home() {
-  const dashboardData = [
+export default function Buddis() {
+  // Dummy data for 4 different metric cards
+  const metricData = [
     {
-      number: 120,
-      label: "Sales",
-      percentage: "+15%",
+      id: 1,
+      percentage: "44.3%",
+      change: "+2.1%",
+      title: "Total Buddis",
+      subtitle: "Active Users",
+      isPositive: true,
     },
     {
-      number: 200,
-      label: "New Users",
-      percentage: "+30%",
+      id: 2,
+      percentage: "1,247",
+      change: "+12.5%",
+      title: "New Registrations",
+      subtitle: "This Month",
+      isPositive: true,
     },
     {
-      number: 75,
-      label: "Projects Completed",
-      percentage: "+10%",
+      id: 3,
+      percentage: "89.2%",
+      change: "-1.3%",
+      title: "Completion Rate",
+      subtitle: "Tasks",
+      isPositive: false,
     },
     {
-      number: 50,
-      label: "Support Tickets",
-      percentage: "-5%",
+      id: 4,
+      percentage: "2.4k",
+      change: "+8.7%",
+      title: "Total Hours",
+      subtitle: "Logged",
+      isPositive: true,
     },
+   
   ];
 
   return (
     <div>
-      <SubTopBar title="Hey There, Brian Ford" button1Text="Download Report" button2Text="View Coverage Requests"/>
-       
-       
-      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 py-6">
-        {dashboardData.map((data, index) => (
-          <DashboardCard
-            key={index}
-            number={data.number}
-            label={data.label}
-            percentage={data.percentage}
+      <SubTopBar
+        title="Buddi Management Portal"
+        button1Text="Manage Interview Question Banks"
+        button2Text="View Coverage Requests"
+      />
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 py-6">
+        {metricData.map((metric) => (
+          <MetricCard
+            key={metric.id}
+            percentage={metric.percentage}
+            change={metric.change}
+            title={metric.title}
+            subtitle={metric.subtitle}
+            isPositive={metric.isPositive}
           />
         ))}
       </div>
-      <div className="flex gap-6 py-4">
-        <BuddisParentsChart />
-        <RecentRegistrations />
-      </div>
       <NotificationBanner
-        title={"20 Timesheets are fully and not Yet Paid!"}
-        description={
-          "We analyzed your account&apos;s performance and here&apos;s what we found out"
-        }
-        actionText={"View Full Timesheets"}
+        title="234 Requests waiting for your approval"
+        description="We analyzed your account's performance and here's what we found out"
+        actionText="Continue "
       />
 
       <div className="flex gap-6 pt-10 py-4">
@@ -85,7 +95,7 @@ export default function Home() {
       <Tabs defaultValue="all" className="">
         <div className="flex w-full min-h-[700px] items-stretch gap-6 py-6">
           <div className="flex-1 h-full flex flex-col">
-            <div className="flex gap-4 bg-white px-6 py-4 mb-8">
+            <div className="flex gap-4 bg-white px-6 py-4 mb-6">
               <TabsList className="flex items-center border border-gray-200 rounded-lg overflow-hidden p-0 h-12 relative">
                 <TabsTrigger
                   value="all"
@@ -141,20 +151,41 @@ export default function Home() {
                 <MoreHorizontal className="h-4 w-4 text-gray-600" />
               </Button>
             </div>
+            <div className="flex items-center justify-end gap-4 mb-6">
+              {/* Search Bar */}
+              <div className="relative hidden md:block">
+                <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400 h-4 w-4" />
+                <Input
+                  placeholder="Search for..."
+                  className="pl-10 w-82 bg-gray-50 border-gray-300 shadow-none"
+                />
+              </div>
+
+              {/* Action Buttons */}
+              <div className="flex items-center gap-2">
+                <Button
+                  variant="ghost"
+                  className="rounded-sm border border-gray-300"
+                  size="sm"
+                >
+                  <Filter className="h-4 w-4" />
+                </Button>
+              </div>
+            </div>
             <div className="flex-1 h-full">
               <TabsContent value="all" className="h-full">
-                <DashboardTable />
+                <BuddisTable />
               </TabsContent>
               <TabsContent value="older" className="h-full">
-                <DashboardTable />
+                <BuddisTable />
               </TabsContent>
               <TabsContent value="recent" className="h-full">
-                <DashboardTable />
+                <BuddisTable />
               </TabsContent>
             </div>
           </div>
           <div className="w-[400px] flex-shrink-0 h-full">
-            <ApplicantCard />
+            <BuddiProfileCard />
           </div>
         </div>
       </Tabs>

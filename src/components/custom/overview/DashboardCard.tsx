@@ -3,7 +3,7 @@
 import { Card, CardContent } from "@/components/ui/card";
 import { ArrowRight, PieChart } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import { Separator } from "../ui/separator";
+import { Separator } from "../../ui/separator";
 
 interface DashboardCardProps {
   number: number;
