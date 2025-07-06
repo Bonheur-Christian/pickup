@@ -9,7 +9,6 @@ import RecentRegistrations from "@/components/custom/RecentRegistrations";
 import { Button } from "@/components/ui/button";
 import { Tabs, TabsList, TabsContent, TabsTrigger } from "@/components/ui/tabs";
 import { MoreHorizontal, PlusIcon } from "lucide-react";
-import { useState, useRef } from "react";
 import {
   DropdownMenu,
   DropdownMenuTrigger,
@@ -28,9 +27,6 @@ import DashboardTable from "@/components/custom/DashboardTable";
 import ApplicantCard from "@/components/custom/ApplicantCard";
 
 export default function Home() {
-  const [dropdownOpen, setDropdownOpen] = useState(false);
-  const plusBtnRef = useRef(null);
-
   const dashboardData = [
     {
       number: 120,
@@ -60,7 +56,7 @@ export default function Home() {
         <div className="pt-4">
           <h1 className="text-2xl font-medium">Hey There, Brian Ford!</h1>
           <p className="text-sm text-gray-400">
-            Welcome back, we're happy to have you here!
+            Welcome back, we&apos;re happy to have you here!
           </p>
         </div>
         <div className="flex gap-6 items-center ">
@@ -100,7 +96,7 @@ export default function Home() {
       <NotificationBanner
         title={"20 Timesheets are fully and not Yet Paid!"}
         description={
-          "We analyzed your account's performance and here's what we found out"
+          "We analyzed your account&apos;s performance and here&apos;s what we found out"
         }
         actionText={"View Full Timesheets"}
       />

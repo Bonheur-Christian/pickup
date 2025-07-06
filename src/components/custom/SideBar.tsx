@@ -3,7 +3,6 @@
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { cn } from "@/lib/utils";
-import Image from "next/image";
 import { useState, useEffect } from "react";
 import { RxDashboard } from "react-icons/rx";
 import { IoDocumentsOutline } from "react-icons/io5";
@@ -11,8 +10,6 @@ import { FiFlag } from "react-icons/fi";
 import { BsPeople } from "react-icons/bs";
 import { RxSpeakerLoud } from "react-icons/rx";
 import { LuCalendarDays } from "react-icons/lu";
-import { IoNotificationsOutline } from "react-icons/io5";
-import { TbScan } from "react-icons/tb";
 import { MdMiscellaneousServices } from "react-icons/md";
 import { TbSquareToggle } from "react-icons/tb";
 

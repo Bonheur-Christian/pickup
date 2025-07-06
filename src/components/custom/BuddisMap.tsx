@@ -1,10 +1,10 @@
-"use client"
+"use client";
 
-import { useState } from "react"
-import { Plus, Minus } from "lucide-react"
+import { useState } from "react";
+import { Plus, Minus } from "lucide-react";
 
 export function BuddisMap() {
-  const [zoomLevel, setZoomLevel] = useState(1)
+  const [, setZoomLevel] = useState(1);
 
   return (
     <div className="bg-white rounded-lg w-full border border-gray-200">
@@ -16,8 +16,18 @@ export function BuddisMap() {
         <div className="absolute inset-0 bg-gradient-to-br from-gray-200 to-gray-300">
           <svg className="w-full h-full" viewBox="0 0 400 200">
             <defs>
-              <pattern id="grid" width="20" height="20" patternUnits="userSpaceOnUse">
-                <path d="M 20 0 L 0 0 0 20" fill="none" stroke="#e5e7eb" strokeWidth="1" />
+              <pattern
+                id="grid"
+                width="20"
+                height="20"
+                patternUnits="userSpaceOnUse"
+              >
+                <path
+                  d="M 20 0 L 0 0 0 20"
+                  fill="none"
+                  stroke="#e5e7eb"
+                  strokeWidth="1"
+                />
               </pattern>
             </defs>
             <rect width="100%" height="100%" fill="url(#grid)" />
@@ -30,9 +40,23 @@ export function BuddisMap() {
               strokeDasharray="5,5"
             />
 
-            <circle cx="50" cy="150" r="8" fill="#10b981" stroke="white" strokeWidth="2" />
+            <circle
+              cx="50"
+              cy="150"
+              r="8"
+              fill="#10b981"
+              stroke="white"
+              strokeWidth="2"
+            />
 
-            <circle cx="350" cy="80" r="8" fill="#3b82f6" stroke="white" strokeWidth="2" />
+            <circle
+              cx="350"
+              cy="80"
+              r="8"
+              fill="#3b82f6"
+              stroke="white"
+              strokeWidth="2"
+            />
           </svg>
         </div>
 
@@ -52,5 +76,5 @@ export function BuddisMap() {
         </div>
       </div>
     </div>
-  )
+  );
 }
